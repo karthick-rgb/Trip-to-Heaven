@@ -616,6 +616,9 @@ nav{position:fixed;top:0;width:100%;z-index:999;display:flex;align-items:center;
 .contact-submit-loading{opacity:.7;pointer-events:none;}
 footer{text-align:center;padding:2.5rem;color:var(--muted);font-size:.8rem;border-top:1px solid rgba(255,255,255,.5);background:rgba(200,200,210,.7);}
 .footer-logo{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--gold);margin-bottom:.5rem;}
+.footer-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1rem;}
+.footer-links a{color:var(--gold);text-decoration:none;font-weight:600;transition:.2s;}
+.footer-links a:hover{text-decoration:underline;color:var(--gold-dim);}
 .reveal{opacity:0;transform:translateY(30px);transition:.7s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 .cinematic-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(184,134,11,0.4),rgba(184,134,11,0.6),rgba(184,134,11,0.4),transparent);margin:0;}
@@ -1081,18 +1084,6 @@ footer{text-align:center;padding:2.5rem;color:var(--muted);font-size:.8rem;borde
               <span>Pay with Razorpay (Test Mode)</span>
             </label>
           </div>
-          <div class="qr-payment">
-            <label>
-              <input type="radio" name="payment" value="qr">
-              <span>💵 Pay with UPI/QR Code <span class="qr-badge">FAST & SECURE</span></span>
-            </label>
-          </div>
-          <div class="razorpay-payment">
-            <label>
-              <input type="radio" name="payment" value="cod">
-              <span>Pay on Arrival (Cash/Card)</span>
-            </label>
-          </div>
         </div>
         
         <button type="button" class="booking-submit" id="bookingSubmitBtn" onclick="submitBooking()">Complete Booking ✓</button>
@@ -1281,6 +1272,11 @@ footer{text-align:center;padding:2.5rem;color:var(--muted);font-size:.8rem;borde
 <footer>
   <div class="footer-logo">✦ Trip for Heaven</div>
   <p>© 2026 Trip for Heaven — India's Finest Curated Travel Experiences</p>
+  <div class="footer-links">
+    <a href="https://razorpay.com/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+    <a href="https://razorpay.com/terms/" target="_blank" rel="noopener noreferrer">Terms & Conditions</a>
+    <a href="https://razorpay.com/refunds/" target="_blank" rel="noopener noreferrer">Refund Policy</a>
+  </div>
   <p style="margin-top:.3rem;">Handpicked with love for soulful travellers</p>
 </footer>
 

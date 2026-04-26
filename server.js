@@ -5,7 +5,7 @@ require('dotenv').config();
 const OpenAI = require('openai');
 
 const app = express();
-const defaultPort = Number(process.env.PORT || 3000);
+const PORT = Number(process.env.PORT || 3000);
 const apiKey = (process.env.OPENAI_API_KEY || '').trim();
 const MODEL = (process.env.OPENAI_MODEL || 'gpt-4o-mini').trim();
 const WEATHER_KEY = (process.env.WEATHER_API_KEY || '').trim();
@@ -383,7 +383,7 @@ function isValidTelegramWebhook(req) {
 // Helper to fetch live data for a city
 async function fetchLiveData(city) {
   const liveData = {};
-  const baseUrl = `http://localhost:${defaultPort}`;
+  const baseUrl = `http://localhost:${PORT}`;
   try {
     if (city) {
       const [wResp, tResp] = await Promise.allSettled([
@@ -1275,7 +1275,6 @@ app.post('/api/telegram/webhook', async (req, res) => {
   const message = req.body?.message || req.body?.edited_message;
   const chatId = message?.chat?.id;
   const text = String(message?.text || '').trim();
-
   res.sendStatus(200);
 
   if (!chatId) return;
@@ -1354,4 +1353,4 @@ function startServer(port) {
   }
 }
 
-startServer(defaultPort);
+startServer(PORT);
