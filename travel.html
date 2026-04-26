@@ -4484,10 +4484,69 @@ window.showRazorpayVerification = function(amount, customerName) {
   document.body.appendChild(modal);
   document.body.style.overflow = 'hidden';
   
-  // Simulate opening Razorpay (in real app, integrate actual Razorpay SDK)
-  setTimeout(() => {
-    alert('Razorpay payment window would open here. For demo, click "Verify Payment" after simulated payment.');
-  }, 1000);
+  // Ensure Razorpay SDK is loaded
+  if (typeof Razorpay === 'undefined') {
+    // Load Razorpay SDK dynamically
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.onload = function() {
+      // Retry opening Razorpay after script loads
+      setTimeout(() => {
+        if (typeof Razorpay !== 'undefined') {
+          openRazorpay();
+        } else {
+          alert('Failed to load Razorpay SDK. Please try again.');
+          closeRazorpayVerification();
+        }
+      }, 500);
+    };
+    script.onerror = function() {
+      alert('Failed to load Razorpay SDK. Please check your internet connection.');
+      closeRazorpayVerification();
+    };
+    document.head.appendChild(script);
+    return;
+  }
+  
+  openRazorpay();
+  
+  function openRazorpay() {
+    const options = {
+      key: 'rzp_test_Si2oyiA5oBCCjk', // Your Razorpay Test Key ID
+      amount: Math.round(amount * 100), // Amount in paisa (multiply by 100)
+      currency: 'INR',
+      name: 'Trip for Heaven',
+      description: 'Travel Booking Payment',
+      image: 'https://via.placeholder.com/100x100?text=TfH', // Replace with your logo URL
+      handler: function (response) {
+        // Payment successful callback
+        alert('Payment successful! Payment ID: ' + response.razorpay_payment_id);
+        // Here you would typically verify the payment on your server
+        // For demo purposes, we'll mark it as verified
+        confirmRazorpayPayment();
+      },
+      prefill: {
+        name: customerName,
+        email: currentBookingData ? currentBookingData.email : '',
+        contact: currentBookingData ? currentBookingData.phone : ''
+      },
+      notes: {
+        address: 'Trip for Heaven Booking'
+      },
+      theme: {
+        color: '#B8860B' // Gold color matching your theme
+      },
+      modal: {
+        ondismiss: function() {
+          // Payment cancelled
+          closeRazorpayVerification();
+        }
+      }
+    };
+    
+    const rzp = new Razorpay(options);
+    rzp.open();
+  }
 };
 
 window.closeRazorpayVerification = function() {
@@ -4500,8 +4559,9 @@ window.closeRazorpayVerification = function() {
 window.confirmRazorpayPayment = async function() {
   if (!currentBookingData) return;
   const btn = document.querySelector('.razorpay-btn.verify');
-  if(btn){ btn.disabled = true; btn.textContent = '⏳ Verifying payment...'; }
-  await new Promise(resolve => setTimeout(resolve, 2000));
+  if(btn){ btn.disabled = true; btn.textContent = '⏳ Processing booking...'; }
+  
+  // Create booking immediately after payment success
   const bookingId = generateBookingId();
   const booking = {
     id: bookingId,
