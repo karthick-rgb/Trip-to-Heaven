@@ -230,13 +230,16 @@ nav{position:fixed;top:0;width:100%;z-index:999;display:flex;align-items:center;
 .card-body{padding:1.6rem;}
 .card-city{font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:4px;color:var(--text);}
 .card-state{color:var(--gold);font-size:.82rem;letter-spacing:1.7px;margin-bottom:.8rem;}
-.card-desc{color:var(--muted);font-size:1rem;line-height:1.65;margin-bottom:1.1rem;}
+.card-desc{color:var(--muted);font-size:1rem;line-height:1.65;margin-bottom:1.1rem;display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;}
 .card-footer{display:flex;justify-content:space-between;align-items:center;}
 .card-tags{display:flex;gap:6px;flex-wrap:wrap;}
 .tag-chip{background:rgba(180,140,20,0.12);color:var(--gold-dim);font-size:.78rem;padding:5px 12px;border-radius:30px;border:1px solid rgba(180,140,20,0.25);transition:all 0.2s ease;}
 .dest-card:hover .tag-chip{background:rgba(180,140,20,0.18);}
+.card-actions{display:flex;align-items:center;gap:8px;}
 .card-cta{background:linear-gradient(135deg,var(--gold-bright),var(--gold-dim));color:#fff;font-weight:700;padding:8px 18px;border-radius:40px;font-size:.85rem;position:relative;overflow:hidden;transition:transform 0.2s ease, box-shadow 0.2s ease;}
 .dest-card:hover .card-cta{transform:scale(1.05);box-shadow:0 4px 15px rgba(180,140,20,0.4);}
+.booking-btn{background:linear-gradient(135deg,var(--gold-dim),var(--gold-bright));color:#fff;font-weight:700;padding:8px 18px;border-radius:40px;font-size:.85rem;border:none;cursor:pointer;transition:transform 0.2s ease, box-shadow 0.2s ease;}
+.booking-btn:hover{transform:scale(1.05);box-shadow:0 4px 15px rgba(180,140,20,0.4);}
 .card-flight-info{position:absolute;bottom:130px;left:14px;background:rgba(48,86,160,.12);border:1px solid rgba(48,86,160,.3);backdrop-filter:blur(8px);border-radius:12px;padding:8px 14px;font-size:.82rem;color:var(--accent);display:none;animation:slideInLeft 0.3s ease;}
 @keyframes slideInLeft{from{opacity:0;transform:translateX(-10px);}to{opacity:1;transform:translateX(0);}}
 .dest-card:hover .card-flight-info{display:block;}
@@ -696,6 +699,302 @@ footer{text-align:center;padding:2.5rem;color:var(--muted);font-size:.8rem;borde
   .contact-success-brand{font-size:1.7rem;}
   .contact-success-title{font-size:1.55rem;}
   .saved-panel-box,.my-bookings-panel-box,.modal-box{border-radius:24px;}
+}
+
+/* Additional responsive fixes */
+@media (max-width: 1024px) {
+  .hero-title{font-size:clamp(2.8rem,6vw,5rem);}
+  .hero-sub{font-size:1.1rem;}
+  .search-bar{max-width:600px;}
+  .stats-bar{gap:3rem;}
+  .dest-grid{grid-template-columns:repeat(2,1fr);}
+  .modal-box{max-width:90vw;}
+  .attr-grid{grid-template-columns:repeat(2,1fr);}
+  .stays-grid{grid-template-columns:repeat(2,1fr);}
+}
+
+@media (max-width: 768px) {
+  body{font-size:14px;}
+  nav{padding:.7rem 1rem;}
+  .logo{font-size:1.3rem;}
+  .hero{min-height:650px;padding-top:70px;}
+  .hero-inner{padding:1rem;}
+  .hero-title{font-size:clamp(2.5rem,5vw,4rem);line-height:1.1;}
+  .hero-sub{font-size:1rem;margin:1rem auto 1.5rem;max-width:95%;}
+  .search-bar{max-width:95%;gap:.5rem;}
+  .search-bar input{font-size:.9rem;padding:.9rem 1rem;}
+  .search-bar button{font-size:.85rem;padding:.9rem 1.5rem;}
+  .hero-tags{gap:.4rem;flex-wrap:wrap;}
+  .hero-tag{font-size:.7rem;padding:.3rem .7rem;}
+  .stats-bar{gap:1.5rem;padding:2rem 1rem;}
+  .stat-num{font-size:2.2rem;}
+  .stat-label{font-size:.7rem;}
+  .sec-title{padding:2.5rem 1rem 1rem;}
+  .sec-title h2{font-size:clamp(1.8rem,3.5vw,2.5rem);}
+  .filter-panel{gap:.6rem;padding:.7rem 1rem;top:65px;overflow-x:auto;}
+  .filter-tags{flex-wrap:nowrap;overflow-x:auto;padding-bottom:.2rem;}
+  .filter-chip{font-size:.75rem;padding:.35rem .8rem;white-space:nowrap;}
+  .budget-slider{width:120px;}
+  .dest-grid{grid-template-columns:1fr;gap:1.5rem;padding:1rem;}
+  .dest-card{border-radius:20px;padding:1.2rem;}
+  .card-img-wrap{height:280px;}
+  .card-city{font-size:1.8rem;}
+  .card-state{font-size:.75rem;}
+  .card-desc{font-size:.9rem;margin-bottom:.9rem;display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;}
+  .card-footer{flex-direction:column;gap:.6rem;align-items:flex-start;}
+  .card-tags{gap:4px;}
+  .tag-chip{font-size:.7rem;padding:4px 10px;}
+  .card-actions{gap:6px;}
+  .card-cta{font-size:.8rem;padding:7px 16px;}
+  .booking-btn{font-size:.8rem;padding:7px 16px;}
+  .card-flight-info{bottom:110px;left:10px;padding:6px 12px;font-size:.75rem;}
+  .ai-panel-btn{bottom:1.5rem;right:1.5rem;width:56px;height:56px;font-size:1.4rem;}
+  .calc-btn{bottom:1.5rem;left:1.5rem;width:56px;height:56px;font-size:1.2rem;}
+  .ai-panel,.calc-panel{bottom:4rem;max-height:65vh;}
+  .modal-overlay{padding:10px;}
+  .modal-box{max-width:95vw;max-height:95vh;overflow-y:auto;border-radius:20px;}
+  .modal-hero{height:250px;}
+  .modal-city{font-size:2rem;}
+  .modal-meta{font-size:.85rem;}
+  .flight-bar{flex-direction:column;gap:.8rem;padding:1rem 1.2rem;}
+  .flight-route{font-size:.9rem;}
+  .flight-price{font-size:1.1rem;}
+  .tab-btn{font-size:.9rem;padding:.9rem 1.2rem;}
+  .tab-content{padding:1.5rem;}
+  .attr-grid{grid-template-columns:1fr;}
+  .attr-card{flex-direction:column;gap:12px;padding:1rem;}
+  .attr-thumb{width:100%;height:200px;}
+  .attr-info h4{font-size:1rem;}
+  .attr-type{font-size:.75rem;}
+  .attr-desc{font-size:.88rem;}
+  .price-chips{flex-wrap:wrap;}
+  .price-chip{font-size:.75rem;padding:4px 10px;}
+  .stays-grid{grid-template-columns:1fr;}
+  .stay-card{padding:.9rem;}
+  .stay-img{height:140px;}
+  .stay-name{font-size:1rem;}
+  .stay-rating{font-size:.85rem;}
+  .stay-price{font-size:1.15rem;}
+  .stay-desc{font-size:.85rem;}
+  .stay-badge{font-size:.7rem;padding:3px 8px;}
+  .map-box{height:320px;}
+  .map-actions{flex-direction:column;gap:.6rem;}
+  .map-link-btn{font-size:.8rem;padding:.6rem 1rem;}
+  .itin-card{padding:1rem 1.2rem;}
+  .itin-day{font-size:.75rem;}
+  .itin-title{font-size:1.2rem;}
+  .itin-step{font-size:.9rem;}
+  .plan-result{padding:1rem;}
+  .about-para{font-size:.95rem;}
+  .contact-form{max-width:100%;gap:.8rem;}
+  .contact-form input,.contact-form textarea{font-size:.9rem;padding:.9rem 1rem;}
+  .contact-form button{font-size:.95rem;padding:.9rem;}
+  .footer-logo{font-size:1.5rem;}
+  .footer-links{gap:.8rem;margin-top:.8rem;}
+  .footer-links a{font-size:.75rem;}
+  .booking-modal{max-width:95vw;padding:1.5rem;}
+  .booking-header h2{font-size:1.5rem;}
+  .booking-form-grid{grid-template-columns:1fr;}
+  .booking-input,.booking-select{font-size:.85rem;padding:.65rem .9rem;}
+  .booking-summary{padding:.9rem;}
+  .booking-summary h4{font-size:.8rem;}
+  .booking-summary-row{font-size:.8rem;}
+  .booking-submit{font-size:.95rem;padding:.9rem;}
+  .razorpay-payment,.qr-payment{padding:.7rem;font-size:.8rem;}
+  .qr-payment-modal{max-width:90vw;padding:1.5rem;}
+  .qr-payment-modal h3{font-size:1.4rem;}
+  .qr-code-container{min-height:240px;}
+  .razorpay-verification-modal{max-width:90vw;padding:1.5rem;}
+  .razorpay-verification-modal h3{font-size:1.4rem;}
+  .booking-confirmation{padding:.8rem;}
+  .conf-title{font-size:1.4rem;}
+  .conf-details{padding:.9rem;margin:.8rem 0;}
+  .conf-details p{font-size:.8rem;}
+  .conf-ok-btn{font-size:.85rem;padding:.7rem 1.8rem;}
+  .my-bookings-panel-box{max-width:95vw;}
+  .my-bookings-grid{grid-template-columns:1fr;padding:1rem;}
+  .booking-card{padding:.9rem;}
+  .booking-card-id{font-size:.8rem;}
+  .booking-card-dest{font-size:1rem;}
+  .booking-card-details{font-size:.75rem;}
+  .booking-card-btn{font-size:.7rem;padding:.45rem;}
+  .saved-panel-box{max-width:95vw;}
+  .saved-grid{grid-template-columns:1fr;padding:1rem;}
+  .saved-card{padding:.8rem;}
+  .saved-card-name{font-size:.85rem;}
+  .saved-card-state{font-size:.7rem;}
+  .saved-remove{top:5px;right:5px;width:22px;height:22px;font-size:.6rem;}
+  .attraction-detail-modal{max-width:95vw;max-height:90vh;}
+  .attraction-detail-img{height:400px;}
+  .attraction-detail-body{padding:2rem 1.5rem;}
+  .attraction-detail-title{font-size:2rem;}
+  .attraction-detail-meta{flex-direction:column;gap:.5rem;}
+  .detail-badge{font-size:.9rem;padding:.4rem .9rem;}
+  .detail-price{font-size:.95rem;}
+  .attraction-detail-list li{font-size:.95rem;padding-left:1.8rem;}
+  .attraction-detail-list li:before{font-size:.9rem;}
+  .attraction-detail-list-nested li{font-size:.9rem;padding-left:1.2rem;}
+  .section-header{font-size:1.1rem;}
+  .attraction-detail-text{font-size:1rem;}
+}
+
+@media (max-width: 480px) {
+  body{font-size:13px;}
+  .hero{min-height:600px;padding-top:65px;}
+  .hero-inner{padding:.8rem;}
+  .hero-title{font-size:clamp(2.2rem,4.5vw,3.5rem);}
+  .hero-sub{font-size:.95rem;margin:.8rem auto 1.2rem;}
+  .search-bar{max-width:100%;gap:.4rem;}
+  .search-bar input{font-size:.85rem;padding:.8rem 1rem;}
+  .search-bar button{font-size:.8rem;padding:.8rem 1.2rem;}
+  .hero-tags{gap:.3rem;}
+  .hero-tag{font-size:.65rem;padding:.25rem .6rem;}
+  .stats-bar{gap:1rem;padding:1.5rem 1rem;}
+  .stat-num{font-size:2rem;}
+  .stat-label{font-size:.65rem;}
+  .sec-title{padding:2rem 1rem 1rem;}
+  .sec-title h2{font-size:clamp(1.6rem,3vw,2.2rem);}
+  .filter-panel{gap:.5rem;padding:.6rem 1rem;top:60px;}
+  .filter-chip{font-size:.7rem;padding:.3rem .7rem;}
+  .budget-slider{width:100px;}
+  .dest-grid{grid-template-columns:1fr;gap:1.2rem;padding:.8rem;}
+  .dest-card{border-radius:16px;padding:1rem;}
+  .card-img-wrap{height:240px;}
+  .card-city{font-size:1.6rem;}
+  .card-state{font-size:.7rem;}
+  .card-desc{font-size:.85rem;margin-bottom:.7rem;display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;}
+  .card-actions{gap:6px;}
+  .card-cta{font-size:.75rem;padding:6px 14px;}
+  .booking-btn{font-size:.75rem;padding:6px 14px;}
+  .card-save-btn{top:8px;right:8px;width:26px;height:26px;font-size:.8rem;}
+  .card-flight-info{bottom:100px;left:8px;padding:5px 10px;font-size:.7rem;}
+  .ai-panel-btn{bottom:1.2rem;right:1.2rem;width:50px;height:50px;font-size:1.2rem;}
+  .calc-btn{bottom:1.2rem;left:1.2rem;width:50px;height:50px;font-size:1.1rem;}
+  .ai-panel,.calc-panel{bottom:3.5rem;max-height:70vh;}
+  .modal-overlay{padding:5px;}
+  .modal-box{max-width:98vw;max-height:98vh;border-radius:16px;}
+  .modal-hero{height:200px;}
+  .modal-city{font-size:1.8rem;}
+  .modal-meta{font-size:.8rem;}
+  .flight-bar{padding:.9rem 1rem;}
+  .flight-route{font-size:.85rem;}
+  .flight-price{font-size:1rem;}
+  .tab-btn{font-size:.85rem;padding:.8rem 1rem;}
+  .tab-content{padding:1.2rem;}
+  .attr-card{padding:.9rem;}
+  .attr-thumb{height:180px;}
+  .attr-info h4{font-size:.95rem;}
+  .attr-desc{font-size:.85rem;}
+  .price-chip{font-size:.7rem;padding:3px 8px;}
+  .stay-card{padding:.8rem;}
+  .stay-img{height:120px;}
+  .stay-name{font-size:.95rem;}
+  .stay-rating{font-size:.8rem;}
+  .stay-price{font-size:1.1rem;}
+  .stay-desc{font-size:.8rem;}
+  .stay-badge{font-size:.65rem;padding:2px 7px;}
+  .map-box{height:280px;}
+  .map-link-btn{font-size:.75rem;padding:.55rem .9rem;}
+  .itin-card{padding:.9rem 1rem;}
+  .itin-title{font-size:1.1rem;}
+  .itin-step{font-size:.85rem;}
+  .plan-result{padding:.9rem;}
+  .about-para{font-size:.9rem;}
+  .contact-form{gap:.6rem;}
+  .contact-form input,.contact-form textarea{font-size:.85rem;padding:.8rem 1rem;}
+  .contact-form button{font-size:.9rem;padding:.8rem;}
+  .footer-logo{font-size:1.4rem;}
+  .footer-links{gap:.6rem;margin-top:.6rem;}
+  .footer-links a{font-size:.7rem;}
+  .booking-modal{max-width:98vw;padding:1.2rem;}
+  .booking-header h2{font-size:1.3rem;}
+  .booking-input,.booking-select{font-size:.8rem;padding:.6rem .8rem;}
+  .booking-summary{padding:.8rem;}
+  .booking-summary-row{font-size:.75rem;}
+  .booking-submit{font-size:.9rem;padding:.8rem;}
+  .razorpay-payment,.qr-payment{padding:.6rem;font-size:.75rem;}
+  .qr-payment-modal{max-width:95vw;padding:1.2rem;}
+  .qr-payment-modal h3{font-size:1.2rem;}
+  .qr-code-container{min-height:200px;}
+  .razorpay-verification-modal{max-width:95vw;padding:1.2rem;}
+  .razorpay-verification-modal h3{font-size:1.2rem;}
+  .booking-confirmation{padding:.6rem;}
+  .conf-title{font-size:1.2rem;}
+  .conf-details{padding:.8rem;margin:.6rem 0;}
+  .conf-details p{font-size:.75rem;}
+  .conf-ok-btn{font-size:.8rem;padding:.65rem 1.5rem;}
+  .my-bookings-panel-box{max-width:98vw;}
+  .my-bookings-grid{grid-template-columns:1fr;padding:.8rem;}
+  .booking-card{padding:.8rem;}
+  .booking-card-id{font-size:.75rem;}
+  .booking-card-dest{font-size:.95rem;}
+  .booking-card-details{font-size:.7rem;}
+  .booking-card-btn{font-size:.65rem;padding:.4rem;}
+  .saved-panel-box{max-width:98vw;}
+  .saved-grid{grid-template-columns:1fr;padding:.8rem;}
+  .saved-card{padding:.7rem;}
+  .saved-card-name{font-size:.8rem;}
+  .saved-card-state{font-size:.65rem;}
+  .saved-remove{top:4px;right:4px;width:20px;height:20px;font-size:.55rem;}
+  .attraction-detail-modal{max-width:98vw;max-height:95vh;}
+  .attraction-detail-img{height:350px;}
+  .attraction-detail-body{padding:1.5rem 1.2rem;}
+  .attraction-detail-title{font-size:1.8rem;}
+  .attraction-detail-meta{flex-direction:column;gap:.4rem;}
+  .detail-badge{font-size:.85rem;padding:.35rem .8rem;}
+  .detail-price{font-size:.9rem;}
+  .attraction-detail-list li{font-size:.9rem;padding-left:1.6rem;}
+  .attraction-detail-list li:before{font-size:.85rem;}
+  .attraction-detail-list-nested li{font-size:.85rem;padding-left:1rem;}
+  .section-header{font-size:1rem;}
+  .attraction-detail-text{font-size:.95rem;}
+}
+
+/* Fix button overlapping */
+.card-cta{margin-top:auto;}
+.card-save-btn{z-index:5;}
+.booking-btn{margin-left:10px;}
+.nav-cta{margin-left:10px;}
+
+/* Ensure modals are scrollable */
+.modal-box,.booking-modal,.qr-payment-modal,.razorpay-verification-modal,.attraction-detail-modal,.saved-panel-box,.my-bookings-panel-box{max-height:90vh;overflow-y:auto;}
+
+/* Tabs scrollable on mobile */
+.modal-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.tab-btn{flex-shrink:0;}
+
+/* AI and Calc panels positioning */
+@media (max-width: 768px) {
+  .ai-panel{right:0.5rem;bottom:4rem;width:calc(100vw - 1rem);height:calc(100vh - 8rem);max-height:70vh;}
+  .calc-panel{left:0.5rem;bottom:4rem;width:calc(100vw - 1rem);height:calc(100vh - 8rem);max-height:70vh;}
+}
+
+/* Hero centering */
+.hero-inner{text-align:center;display:flex;flex-direction:column;align-items:center;}
+.hero-title{text-align:center;}
+.hero-sub{text-align:center;max-width:600px;}
+.search-bar{justify-content:center;}
+.hero-tags{justify-content:center;}
+
+/* Nav fixes */
+.nav-links a{text-align:center;}
+.nav-menu-btn{display:none;}
+@media (max-width: 768px) {
+  .nav-menu-btn{display:flex;}
+  .nav-links{display:none;}
+  .nav-links.mobile-open{display:flex;}
+}
+
+/* Filter panel scroll */
+.filter-panel{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.filter-tags{display:flex;gap:.4rem;flex-wrap:nowrap;}
+
+/* Grid adjustments */
+@media (min-width: 1025px) {
+  .dest-grid{grid-template-columns:repeat(2,1fr);}
+  .attr-grid{grid-template-columns:repeat(3,1fr);}
+  .stays-grid{grid-template-columns:repeat(3,1fr);}
+  .card-desc{display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;}
 }
 
 /* ============================================================
@@ -2592,8 +2891,8 @@ function renderCards(textFilter=""){
         <div class="card-state">${d.state}</div>
         <div class="card-desc">${d.desc}</div>
         <div class="card-footer">
-          <div class="card-tags">${d.tags.map(t=>`<span class="tag-chip">${t}</span>`).join("")}</div>
-          <div style="display:flex;align-items:center;gap:8px;">
+          <div class="card-tags">${d.tags.slice(0,3).map(t=>`<span class="tag-chip">${t}</span>`).join("")}</div>
+          <div class="card-actions">
             <div class="card-cta">Explore →</div>
             <button class="booking-btn" onclick="event.stopPropagation();openBookingModal('${key}')">Book Now</button>
           </div>
